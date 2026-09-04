@@ -584,7 +584,18 @@ export default async function handler(req) {
     messages: toOpenAIMessages(system, messages),
     stream: !!stream,
   };
-  if (max_tokens !== undefined) openaiBody.max_tokens = max_tokens;
+  // OpenAI's reasoning-family models (o1, o3, gpt-5.x) reject the legacy
+  // `max_tokens` field with a 400 and require `max_completion_tokens`
+  // instead. Detect by model id prefix/substring so both old- and
+  // new-style providers work without manual config.
+  const usesMaxCompletionTokens = /(^|[./])(o[13]|gpt-5)/i.test(resolvedModel);
+  if (max_tokens !== undefined) {
+    if (usesMaxCompletionTokens) {
+      openaiBody.max_completion_tokens = max_tokens;
+    } else {
+      openaiBody.max_tokens = max_tokens;
+    }
+  }
   if (temperature !== undefined) openaiBody.temperature = temperature;
   if (top_p !== undefined) openaiBody.top_p = top_p;
   if (stop_sequences?.length) openaiBody.stop = stop_sequences;

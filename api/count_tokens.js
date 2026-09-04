@@ -4,8 +4,6 @@
 // a rough estimate based on character count (~1 token ≈ 4 chars). Accurate within ~10-15%.
 // It's good enough to avoid errors and prevent token limit surprises.
 
-export const config = { runtime: 'edge' };
-
 const ENABLE_LOGGING = process.env.ENABLE_LOGGING === 'true';
 const PROXY_SECRET = process.env.PROXY_SECRET;
 const REQUEST_ID_PREFIX = 'req_';
