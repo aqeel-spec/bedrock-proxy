@@ -1,0 +1,1 @@
+{"rewrites":[{"source":"/v1/messages/count_tokens","destination":"/api/count_tokens"},{"source":"/v1/messages","destination":"/api/messages"}]}
