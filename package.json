@@ -1,1 +1,24 @@
-{"name":"claude-code-bedrock-glm-proxy","version":"1.1.0","private":true,"description":"Production-ready Vercel Edge Function that translates Claude Code (Anthropic Messages API) into any OpenAI-compatible endpoint — GLM, Bedrock, OpenRouter, or any provider.","engines":{"node":">=18"},"scripts":{"deploy":"vercel --prod","logs":"vercel logs","env":"vercel env pull"},"devDependencies":{},"keywords":["claude","anthropic","bedrock","openai","proxy","glm","api-translation"]}
+{
+  "name": "claude-code-bedrock-glm-proxy",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Local Node.js proxy that translates Claude Code's Anthropic Messages API into any OpenAI-compatible endpoint.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "claude",
+    "anthropic",
+    "bedrock",
+    "openai",
+    "proxy",
+    "glm",
+    "api-translation"
+  ]
+}
